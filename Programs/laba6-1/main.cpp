@@ -8,7 +8,6 @@ int main()
     setlocale(LC_ALL, "Russian");
     char Str[80];
     char* arr[100];
-    char ch[10];
     int count = 0;
     char* str;
     int k = 0;
@@ -16,7 +15,7 @@ int main()
     
     cout << "Введите предложение: "; cin.getline(Str, 80);
 
-    str = strtok(Str, " ,.-");
+    str = strtok(Str, " ,.-?");
     while (str != NULL)
     {
         arr[k] = str;
@@ -25,11 +24,11 @@ int main()
     }
 
     for (int i = 0; i < k; i++) {
-        if (i > 1) {
-            if(arr[1][strlen(arr[1])-1] == arr[i][strlen(arr[i])-1]) {
-            count++;
-            cout << arr[i] << endl;
-        }
+        if(arr[1][strlen(arr[1])-1] == arr[i][strlen(arr[i])-1]) {
+            if (i != 1) {
+                count++;
+                cout << arr[i] << endl;
+            }
         }
     }
 
